@@ -6,6 +6,8 @@ import FlipCard from "@/src/components/BanknoteFlip.svelte";
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 
+const baseURL = import.meta.env.BASE_URL;
+
 export async function getStaticPaths() {
     const allDesigns = await getCollection("designs");
 
@@ -55,7 +57,7 @@ const sortedDesigns = allDesigns.sort((a, b) => a.id.localeCompare(b.id));
                         const isCurrentDesign = p.id === design.id;
                         return (
                             <a
-                                href={`/design/${p.id}/${activeNote.denomination}`}
+                                href={`${baseURL}/design/${p.id}/${activeNote.denomination}`}
                                 class={`w-10 h-10 flex items-center justify-center rounded-lg font-bold uppercase transition-all duration-200 ${
                                     isCurrentDesign
                                         ? "bg-blue-600 text-white shadow-md scale-105"
@@ -91,7 +93,7 @@ const sortedDesigns = allDesigns.sort((a, b) => a.id.localeCompare(b.id));
                     const isActive = n.denomination === activeNote.denomination;
                     return (
                         <a
-                            href={`/design/${design.id}/${n.denomination}`}
+                            href={`${baseURL}/design/${design.id}/${n.denomination}`}
                             class={`transition-all duration-200 block overflow-hidden border-2 ${
                                 isActive
                                     ? "border-blue-600 scale-105 shadow-lg ring-2 ring-blue-600/20"

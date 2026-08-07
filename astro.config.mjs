@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [svelte()],
   site: "https://emilyxfox.github.io",
-  base: "euro-banknote-proposals",
+  base: "/euro-banknote-proposals",
 
   vite: {
     plugins: [tailwindcss()]
